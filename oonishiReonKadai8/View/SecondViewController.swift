@@ -14,20 +14,29 @@ final class SecondViewController: UIViewController {
     @IBOutlet private weak var numberLabel: UILabel!
     @IBOutlet private weak var numberSlider: UISlider!
     
+    private let secondViewModel: ViewModelType = ViewModel()
     private let disposeBag = DisposeBag()
-    private let secondViewModel: SecondViewModelType = SecondViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupBindings()
-        secondViewModel.inputs.sliderValue.accept(0.0)
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        secondViewModel.inputs.sliderValue.accept(
+            secondViewModel.outputs.get()
+        )
+
     }
     
     private func setupBindings() {
         numberSlider.rx.value
             .subscribe(onNext: { [weak self] value in
+                self?.secondViewModel.inputs.save(value)
                 self?.secondViewModel.inputs.sliderValue.accept(value)
             })
             .disposed(by: disposeBag)
@@ -35,45 +44,10 @@ final class SecondViewController: UIViewController {
         secondViewModel.outputs.numberText
             .drive(numberLabel.rx.text)
             .disposed(by: disposeBag)
-    }
-    
-}
-
-protocol SecondViewModelInput {
-    var sliderValue: PublishRelay<Float> { get }
-}
-
-protocol SecondViewModelOutput: AnyObject {
-    var numberText: Driver<String> { get }
-}
-
-protocol SecondViewModelType {
-    var inputs: SecondViewModelInput { get }
-    var outputs: SecondViewModelOutput { get }
-}
-
-final class SecondViewModel: SecondViewModelInput, SecondViewModelOutput {
-    
-    var sliderValue = PublishRelay<Float>()
-    
-    var numberText: Driver<String>
-    
-    init() {
-        numberText = sliderValue
-            .map { String($0) }
-            .asDriver(onErrorDriveWith: .empty())
-    }
-    
-}
-
-extension SecondViewModel: SecondViewModelType {
-    
-    var inputs: SecondViewModelInput {
-        return self
-    }
-    
-    var outputs: SecondViewModelOutput {
-        return self
+        
+        secondViewModel.outputs.changeSliderValue
+            .drive(numberSlider.rx.value)
+            .disposed(by: disposeBag)
     }
     
 }
