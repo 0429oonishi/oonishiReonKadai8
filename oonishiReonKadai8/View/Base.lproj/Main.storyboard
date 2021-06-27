@@ -15,10 +15,32 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4f0-55-2iU">
+                                <rect key="frame" x="186" y="144" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="TCo-wE-SPQ">
+                                <rect key="frame" x="48" y="265" width="318" height="31"/>
+                            </slider>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemRedColor"/>
+                        <constraints>
+                            <constraint firstItem="4f0-55-2iU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="5UT-7g-BPp"/>
+                            <constraint firstItem="TCo-wE-SPQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DYK-fa-ERt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TCo-wE-SPQ" secondAttribute="trailing" constant="50" id="aq1-kR-pF1"/>
+                            <constraint firstItem="4f0-55-2iU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="guv-lP-lZt"/>
+                            <constraint firstItem="TCo-wE-SPQ" firstAttribute="top" secondItem="4f0-55-2iU" secondAttribute="bottom" constant="100" id="qSh-Xj-SC3"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="EgO-4P-FIR"/>
+                    <connections>
+                        <outlet property="numberLabel" destination="4f0-55-2iU" id="mjW-9e-4cQ"/>
+                        <outlet property="numberSlider" destination="TCo-wE-SPQ" id="YIM-36-qkk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -31,10 +53,32 @@
                     <view key="view" contentMode="scaleToFill" id="Tcr-0X-qQg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="8EY-qj-J9O">
+                                <rect key="frame" x="48" y="265" width="318" height="31"/>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oGQ-eI-Mi5">
+                                <rect key="frame" x="186" y="144" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="LIj-y3-7fG"/>
-                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <constraints>
+                            <constraint firstItem="oGQ-eI-Mi5" firstAttribute="centerX" secondItem="Tcr-0X-qQg" secondAttribute="centerX" id="2oJ-DD-K3H"/>
+                            <constraint firstItem="8EY-qj-J9O" firstAttribute="centerX" secondItem="Tcr-0X-qQg" secondAttribute="centerX" id="7fF-3V-a2i"/>
+                            <constraint firstItem="8EY-qj-J9O" firstAttribute="top" secondItem="oGQ-eI-Mi5" secondAttribute="bottom" constant="100" id="Dqb-8T-TU5"/>
+                            <constraint firstItem="LIj-y3-7fG" firstAttribute="trailing" secondItem="8EY-qj-J9O" secondAttribute="trailing" constant="50" id="ifq-6b-coc"/>
+                            <constraint firstItem="oGQ-eI-Mi5" firstAttribute="top" secondItem="LIj-y3-7fG" secondAttribute="top" constant="100" id="rRr-SW-mm2"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="Sht-xD-F00"/>
+                    <connections>
+                        <outlet property="numberLabel" destination="oGQ-eI-Mi5" id="ech-nS-kma"/>
+                        <outlet property="numberSlider" destination="8EY-qj-J9O" id="ky8-Y6-d5V"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z3q-tb-3lw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -46,6 +90,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="kco-Nq-I1E" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GkG-ji-XXp">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -60,8 +105,8 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

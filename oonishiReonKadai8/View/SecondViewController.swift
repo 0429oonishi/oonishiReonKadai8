@@ -6,24 +6,74 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
-class SecondViewController: UIViewController {
-
+final class SecondViewController: UIViewController {
+    
+    @IBOutlet private weak var numberLabel: UILabel!
+    @IBOutlet private weak var numberSlider: UISlider!
+    
+    private let disposeBag = DisposeBag()
+    private let secondViewModel: SecondViewModelType = SecondViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        setupBindings()
+        secondViewModel.inputs.sliderValue.accept(0.0)
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setupBindings() {
+        numberSlider.rx.value
+            .subscribe(onNext: { [weak self] value in
+                self?.secondViewModel.inputs.sliderValue.accept(value)
+            })
+            .disposed(by: disposeBag)
+        
+        secondViewModel.outputs.numberText
+            .drive(numberLabel.rx.text)
+            .disposed(by: disposeBag)
     }
-    */
+    
+}
 
+protocol SecondViewModelInput {
+    var sliderValue: PublishRelay<Float> { get }
+}
+
+protocol SecondViewModelOutput: AnyObject {
+    var numberText: Driver<String> { get }
+}
+
+protocol SecondViewModelType {
+    var inputs: SecondViewModelInput { get }
+    var outputs: SecondViewModelOutput { get }
+}
+
+final class SecondViewModel: SecondViewModelInput, SecondViewModelOutput {
+    
+    var sliderValue = PublishRelay<Float>()
+    
+    var numberText: Driver<String>
+    
+    init() {
+        numberText = sliderValue
+            .map { String($0) }
+            .asDriver(onErrorDriveWith: .empty())
+    }
+    
+}
+
+extension SecondViewModel: SecondViewModelType {
+    
+    var inputs: SecondViewModelInput {
+        return self
+    }
+    
+    var outputs: SecondViewModelOutput {
+        return self
+    }
+    
 }
