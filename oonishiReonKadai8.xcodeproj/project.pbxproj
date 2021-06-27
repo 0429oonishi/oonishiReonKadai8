@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38A8CC41E47689FE2C8960ED /* Pods_oonishiReonKadai8.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D96886A4DB31D6EA8317EE98 /* Pods_oonishiReonKadai8.framework */; };
 		AB0979E7268865D7009873D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0979E6268865D7009873D2 /* AppDelegate.swift */; };
 		AB0979E9268865D7009873D2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0979E8268865D7009873D2 /* SceneDelegate.swift */; };
 		AB0979EB268865D7009873D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0979EA268865D7009873D2 /* ViewController.swift */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		19EB9733D269682B970C2146 /* Pods-oonishiReonKadai8.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oonishiReonKadai8.debug.xcconfig"; path = "Target Support Files/Pods-oonishiReonKadai8/Pods-oonishiReonKadai8.debug.xcconfig"; sourceTree = "<group>"; };
+		995A018855F0C9AA3D495E83 /* Pods-oonishiReonKadai8.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oonishiReonKadai8.release.xcconfig"; path = "Target Support Files/Pods-oonishiReonKadai8/Pods-oonishiReonKadai8.release.xcconfig"; sourceTree = "<group>"; };
 		AB0979E3268865D7009873D2 /* oonishiReonKadai8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = oonishiReonKadai8.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB0979E6268865D7009873D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB0979E8268865D7009873D2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +27,7 @@
 		AB0979EF268865D8009873D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB0979F2268865D8009873D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB0979F4268865D8009873D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D96886A4DB31D6EA8317EE98 /* Pods_oonishiReonKadai8.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_oonishiReonKadai8.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38A8CC41E47689FE2C8960ED /* Pods_oonishiReonKadai8.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8ABE7569B17A1A9A332E3E35 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D96886A4DB31D6EA8317EE98 /* Pods_oonishiReonKadai8.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AB0979DA268865D7009873D2 = {
 			isa = PBXGroup;
 			children = (
 				AB0979E5268865D7009873D2 /* oonishiReonKadai8 */,
 				AB0979E4268865D7009873D2 /* Products */,
+				D7C7C379AFA852D4EF589CBC /* Pods */,
+				8ABE7569B17A1A9A332E3E35 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +82,16 @@
 			path = oonishiReonKadai8;
 			sourceTree = "<group>";
 		};
+		D7C7C379AFA852D4EF589CBC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				19EB9733D269682B970C2146 /* Pods-oonishiReonKadai8.debug.xcconfig */,
+				995A018855F0C9AA3D495E83 /* Pods-oonishiReonKadai8.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AB0979F7268865D8009873D2 /* Build configuration list for PBXNativeTarget "oonishiReonKadai8" */;
 			buildPhases = (
+				85DF5539692872D7B97DE67A /* [CP] Check Pods Manifest.lock */,
 				AB0979DF268865D7009873D2 /* Sources */,
 				AB0979E0268865D7009873D2 /* Frameworks */,
 				AB0979E1268865D7009873D2 /* Resources */,
+				9F5BA30EF96BA061C07FE55B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -131,6 +158,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		85DF5539692872D7B97DE67A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-oonishiReonKadai8-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9F5BA30EF96BA061C07FE55B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-oonishiReonKadai8/Pods-oonishiReonKadai8-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-oonishiReonKadai8/Pods-oonishiReonKadai8-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-oonishiReonKadai8/Pods-oonishiReonKadai8-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AB0979DF268865D7009873D2 /* Sources */ = {
@@ -283,6 +352,7 @@
 		};
 		AB0979F8268865D8009873D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19EB9733D269682B970C2146 /* Pods-oonishiReonKadai8.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -302,6 +372,7 @@
 		};
 		AB0979F9268865D8009873D2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 995A018855F0C9AA3D495E83 /* Pods-oonishiReonKadai8.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
