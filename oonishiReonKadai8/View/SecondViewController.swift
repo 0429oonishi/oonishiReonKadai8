@@ -14,40 +14,44 @@ final class SecondViewController: UIViewController {
     @IBOutlet private weak var numberLabel: UILabel!
     @IBOutlet private weak var numberSlider: UISlider!
     
-    private let secondViewModel: ViewModelType = ViewModel()
+    private let viewModel: ViewModelType = ViewModel(
+        valueUseCase: ModelLocator.shared.valueUseCase
+    )
+
     private let disposeBag = DisposeBag()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupBindings()
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        secondViewModel.inputs.sliderValue.accept(
-            secondViewModel.outputs.get()
-        )
 
     }
-    
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        viewModel.inputs.viewWillAppear()
+    }
+
     private func setupBindings() {
-        numberSlider.rx.value
-            .subscribe(onNext: { [weak self] value in
-                self?.secondViewModel.inputs.save(value)
-                self?.secondViewModel.inputs.sliderValue.accept(value)
+        viewModel.outputs.event
+            .drive(onNext: { [weak self] in
+                switch $0 {
+                case .changeSliderValue(let value):
+                    self?.numberSlider.value = value
+                }
             })
             .disposed(by: disposeBag)
-        
-        secondViewModel.outputs.numberText
+
+
+        numberSlider.rx.value
+            .subscribe(onNext: { [weak self] value in
+                self?.viewModel.inputs.didChangeSliderValue(value: value)
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.outputs.numberText
             .drive(numberLabel.rx.text)
             .disposed(by: disposeBag)
-        
-        secondViewModel.outputs.changeSliderValue
-            .drive(numberSlider.rx.value)
-            .disposed(by: disposeBag)
     }
-    
 }
