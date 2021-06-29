@@ -9,15 +9,19 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+protocol ValueUseCaseProtocol {
+    var value: Observable<Float> { get }
+    func update(value: Float)
+}
+
 protocol ViewModelInput {
-    var sliderValue: PublishRelay<Float?> { get }
-    func save(_ value: Float?)
+    func viewWillAppear()
+    func didChangeSliderValue(value: Float)
 }
 
 protocol ViewModelOutput: AnyObject {
+    var event: Driver<ViewModel.Event> { get }
     var numberText: Driver<String> { get }
-    var changeSliderValue: Driver<Float> { get }
-    func get() -> Float
 }
 
 protocol ViewModelType {
@@ -26,32 +30,49 @@ protocol ViewModelType {
 }
 
 final class ViewModel: ViewModelInput, ViewModelOutput {
-    var sliderValue = PublishRelay<Float?>()
-    
-    var numberText: Driver<String>
-    var changeSliderValue: Driver<Float>
-    let repository = Repository(
-        dataStore: UserDefaultsDataStore()
-    )
-    
-    init() {
-        numberText = sliderValue
-            .map { String($0 ?? 0.0) }
-            .asDriver(onErrorDriveWith: .empty())
-        
-        changeSliderValue = sliderValue
-            .map { $0 ?? 0.0 }
+    enum Event {
+        case changeSliderValue(Float)
+    }
+
+    var event: Driver<Event> {
+        eventRelay
             .asDriver(onErrorDriveWith: .empty())
     }
-    
-    func save(_ value: Float?) {
-        repository.save(value ?? 0.0)
+    private let eventRelay = PublishRelay<Event>()
+
+    var numberText: Driver<String> {
+        valueUseCase.value
+            .map { String($0) }
+            .asDriver(onErrorDriveWith: .empty())
     }
+
+    let valueUseCase: ValueUseCaseProtocol
+
+    private let viewWillAppearTrigger = PublishRelay<Void>()
+
+    private let disposeBag = DisposeBag()
     
-    func get() -> Float {
-        return repository.get() ?? 0.0
+    init(valueUseCase: ValueUseCaseProtocol) {
+        self.valueUseCase = valueUseCase
+
+        setupBindings()
     }
-    
+
+    private func setupBindings() {
+        viewWillAppearTrigger
+            .withLatestFrom(valueUseCase.value)
+            .map(Event.changeSliderValue)
+            .bind(to: eventRelay)
+            .disposed(by: disposeBag)
+    }
+
+    func viewWillAppear() {
+        viewWillAppearTrigger.accept(())
+    }
+
+    func didChangeSliderValue(value: Float) {
+        valueUseCase.update(value: value)
+    }
 }
 
 extension ViewModel: ViewModelType {
