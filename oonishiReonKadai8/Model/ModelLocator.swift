@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+final class ModelLocator {
+    static let shared = ModelLocator()
+    private init() { }
+    
+    let valueUseCase = ValueUseCase()
+    
+}

@@ -16,8 +16,8 @@
 		AB0979FB268867D7009873D2 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0979FA268867D7009873D2 /* FirstViewController.swift */; };
 		AB0979FD268867E1009873D2 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0979FC268867E1009873D2 /* SecondViewController.swift */; };
 		AB097A042688748F009873D2 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB097A032688748F009873D2 /* ViewModel.swift */; };
-		AB097A0626887571009873D2 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB097A0526887571009873D2 /* Repository.swift */; };
-		AB097A0826887577009873D2 /* UserDefaultsDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB097A0726887577009873D2 /* UserDefaultsDataStore.swift */; };
+		AB526D6F269343A400DEC581 /* ModelLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB526D6E269343A400DEC581 /* ModelLocator.swift */; };
+		AB526D712693440F00DEC581 /* ValueUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB526D702693440F00DEC581 /* ValueUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,8 +33,8 @@
 		AB0979FA268867D7009873D2 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		AB0979FC268867E1009873D2 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		AB097A032688748F009873D2 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		AB097A0526887571009873D2 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
-		AB097A0726887577009873D2 /* UserDefaultsDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsDataStore.swift; sourceTree = "<group>"; };
+		AB526D6E269343A400DEC581 /* ModelLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLocator.swift; sourceTree = "<group>"; };
+		AB526D702693440F00DEC581 /* ValueUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueUseCase.swift; sourceTree = "<group>"; };
 		D96886A4DB31D6EA8317EE98 /* Pods_oonishiReonKadai8.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_oonishiReonKadai8.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -94,8 +94,8 @@
 		AB0979FE26886852009873D2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AB097A0726887577009873D2 /* UserDefaultsDataStore.swift */,
-				AB097A0526887571009873D2 /* Repository.swift */,
+				AB526D6E269343A400DEC581 /* ModelLocator.swift */,
+				AB526D702693440F00DEC581 /* ValueUseCase.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -243,11 +243,11 @@
 			files = (
 				AB0979E7268865D7009873D2 /* AppDelegate.swift in Sources */,
 				AB0979E9268865D7009873D2 /* SceneDelegate.swift in Sources */,
-				AB097A0826887577009873D2 /* UserDefaultsDataStore.swift in Sources */,
+				AB526D6F269343A400DEC581 /* ModelLocator.swift in Sources */,
 				AB0979FD268867E1009873D2 /* SecondViewController.swift in Sources */,
 				AB097A042688748F009873D2 /* ViewModel.swift in Sources */,
-				AB097A0626887571009873D2 /* Repository.swift in Sources */,
 				AB0979FB268867D7009873D2 /* FirstViewController.swift in Sources */,
+				AB526D712693440F00DEC581 /* ValueUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
