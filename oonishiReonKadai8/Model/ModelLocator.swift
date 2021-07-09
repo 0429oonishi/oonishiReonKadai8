@@ -8,6 +8,7 @@
 import Foundation
 
 final class ModelLocator {
+    // ValueUseCase のインスタンスを2画面で共有するため、シングルトン
     static let shared = ModelLocator()
     private init() { }
     
