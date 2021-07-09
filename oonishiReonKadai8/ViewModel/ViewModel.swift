@@ -40,6 +40,7 @@ final class ViewModel: ViewModelInput, ViewModelOutput {
     }
     private let eventRelay = PublishRelay<Event>()
     
+    // ValueUseCaseの現在値を文字列化してDriverとする
     var numberText: Driver<String> {
         valueUseCase.value
             .map { String($0) }
@@ -51,6 +52,7 @@ final class ViewModel: ViewModelInput, ViewModelOutput {
     private let viewWillAppearTrigger = PublishRelay<Void>()
     
     private func setupBindings() {
+        // viewWillAppearが発生したら、UseCaseの現在値をEvent.changeSliderValueに包んでeventRelayに流す
         viewWillAppearTrigger
             .withLatestFrom(valueUseCase.value)
             .map(Event.changeSliderValue)
@@ -63,6 +65,7 @@ final class ViewModel: ViewModelInput, ViewModelOutput {
     }
     
     func sliderValueDidChanged(value: Float) {
+        // UseCaseのupdateを呼ぶのみ
         valueUseCase.update(value: value)
     }
     
